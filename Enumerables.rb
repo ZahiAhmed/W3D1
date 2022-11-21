@@ -56,11 +56,11 @@ class Array
         my_arr = Array.new(self.length) { Array.new(args.length + 1) }
         temp_arr = [self] + args
         
-            temp_arr.each_with_index do |arr, i|
-                if i < my_arr[0].length 
-                    arr.each_with_index { |ele, j| my_arr[j][i] = ele if j < my_arr.length }
-                end 
-            end
+        temp_arr.each_with_index do |arr, i|
+            if i < my_arr[0].length 
+                arr.each_with_index { |ele, j| my_arr[j][i] = ele if j < my_arr.length }
+            end 
+        end
         my_arr
     end
 end
