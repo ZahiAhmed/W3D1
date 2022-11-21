@@ -63,8 +63,28 @@ class Array
         end
         my_arr
     end
-end
 
+    def my_rotate(num = 1)
+        rotate_arr = []
+        self.each.with_index do |ele , i|
+            index = (i+num) % self.length
+            rotate_arr << self[index]
+        end
+        rotate_arr
+    end
+
+    def my_join(string = "")
+        join_string = ""
+        self.each.with_index do |char, i|
+            join_string += char
+            if i != length - 1
+                join_string += string
+            end 
+        end
+        join_string
+    end
+
+end
 # calls my_each twice on the array, printing all the numbers twice.
 return_value = [1, 2, 3].my_each do |num|
 puts num
@@ -110,3 +130,15 @@ p [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
 c = [10, 11, 12]
 d = [13, 14, 15]
 p [1, 2].my_zip(a, b, c, d)    # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
+
+p "rotate"
+a = [ "a", "b", "c", "d" ]
+p a.my_rotate         #=> ["b", "c", "d", "a"]
+p a.my_rotate(2)      #=> ["c", "d", "a", "b"]
+p a.my_rotate(-3)     #=> ["b", "c", "d", "a"]
+p a.my_rotate(15)     #=> ["d", "a", "b", "c"]
+
+p 'join'
+a = [ "a", "b", "c", "d" ]
+p a.my_join         # => "abcd"
+p a.my_join("$")    # => "a$b$c$d"
