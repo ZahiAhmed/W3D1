@@ -101,9 +101,25 @@ p [4, 3, 7, 1, 5].bubble_sort{|a, b| a <=> b}
 # words).
 
 def substrings(string)
+  sub_arr = []
+  
+  i = 0
+  while i < string.length
+    j = i
+    while j < string.length
+      sub_arr << string[i..j]
+      j += 1
+    end
+
+    i += 1
+  end
+  sub_arr
 end
+p substrings("doggo")
+p substrings("cat")
 
 def subwords(word, dictionary)
+  substrings(word).select { |substring| dictionary.include?(substring) }
 end
 
 # ### Doubler
@@ -111,6 +127,7 @@ end
 # array with the original elements multiplied by two.
 
 def doubler(array)
+  array.map { |int| int * 2 }
 end
 
 # ### My Each
