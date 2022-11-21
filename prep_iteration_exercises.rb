@@ -4,7 +4,12 @@
 # factors of a given number.
 
 def factors(num)
+  (1..num).select { |i| num % i == 0 }
 end
+p factors(10)
+p factors(20)
+p factors(3)
+p factors(7)
 
 # ### Bubble Sort
 #
