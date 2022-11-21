@@ -84,6 +84,15 @@ class Array
         join_string
     end
 
+    def my_reverse
+        arr = []
+        i = self.length
+        while i > 0
+            i -= 1
+            arr << self[i]
+        end
+        arr
+    end
 end
 # calls my_each twice on the array, printing all the numbers twice.
 return_value = [1, 2, 3].my_each do |num|
@@ -142,3 +151,7 @@ p 'join'
 a = [ "a", "b", "c", "d" ]
 p a.my_join         # => "abcd"
 p a.my_join("$")    # => "a$b$c$d"
+
+p "reverse"
+p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+p [ 1 ].my_reverse               #=> [1]
