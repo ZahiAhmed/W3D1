@@ -38,6 +38,21 @@ class Array
         end
         true
     end
+
+    def my_flatten
+        return [self] if !self.kind_of?(Array)
+        flatten = []
+        self.each do |ele|
+            if ele.kind_of?(Array)
+                flatten += ele.my_flatten
+            else
+                flatten << ele
+            end
+        end
+        flatten
+    end
+
+    def my_zip
 end
 
 # calls my_each twice on the array, printing all the numbers twice.
@@ -71,3 +86,8 @@ p a.my_any? { |num| num > 1 } # => true
 p a.my_any? { |num| num == 4 } # => false
 p a.my_all? { |num| num > 1 } # => false
 p a.my_all? { |num| num < 4 } # => true
+
+p "flatten"
+p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
+
+p "zip"
